@@ -150,7 +150,7 @@ exports.adminAuth = async (req, res, next) => {
         message: "Authentication Failed: User not found",
       });
     }
-    
+
     if (user.isAdmin !== true) {
       return res.status(401).json({
         message: "Unauthorized: Please contact Admin",

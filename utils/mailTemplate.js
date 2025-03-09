@@ -25,7 +25,7 @@ const signUpTemplate = (verifyLink, firstName) => {
                 background-color: #f4f4f4; /* Light grey background */
             }
             .header {
-                background: #333333;
+                background: #570e0e;
                 padding: 20px;
                 text-align: center;
                 border-bottom: 1px solid #ddd;
@@ -42,8 +42,8 @@ const signUpTemplate = (verifyLink, firstName) => {
             }
             .button {
                 display: inline-block;
-                background-color: #28a745; /* Green background */
-                color: #ffffff;
+                background-color:  #fc7e7e; /* Green background */
+                color: #131111;
                 padding: 15px 30px;
                 font-size: 18px;
                 text-decoration: none;
@@ -55,7 +55,7 @@ const signUpTemplate = (verifyLink, firstName) => {
                 background-color: #218838;
             }
             .footer {
-                background: #333333;
+                background: #570e0e;
                 padding: 10px;
                 text-align: center;
                 border-top: 1px solid #ddd;
@@ -68,17 +68,17 @@ const signUpTemplate = (verifyLink, firstName) => {
     <body>
         <div class="container">
             <div class="header">
-                <h1>email message!</h1>
+                <h1>BlogIT App!</h1>
             </div>
             <div class="content">
                 <p>Hello ${firstName},</p>
-                <p>Thank you for signing up on our blog app. We are excited to have you on board.</p>
+                <p>Thank you for signing up on Blog_IT App. We are excited to have you on board.</p>
                 <p>Please click the button below to verify your account:</p>
                 <div class="button-container">
                     <a href="${verifyLink}" class="button">Verify My Account</a>
                 </div>
                 <p>If you did not sign up on our platform, kindly ignore this email.</p>
-                <p>Best regards,<br>Blog App Team</p>
+                <p>Best regards,<br>BlogIT Team</p>
             </div>
             <div class="footer">
                 <p>&copy; ${new Date().getFullYear()} . All rights reserved.</p>
@@ -87,6 +87,7 @@ const signUpTemplate = (verifyLink, firstName) => {
     </body>
     </html>
     
+  
     
     `
 }

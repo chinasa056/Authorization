@@ -3,14 +3,17 @@ const bcrypt = require("bcrypt");
 const sendMail = require("../middleware/nodemailer")
 const jwt = require("jsonwebtoken");
 const { signUpTemplate, forgotPasswordTemplate } = require("../utils/mailTemplate");
+const { validate } = require("../utils/utilities");
+const { reqisterUserSchema, loginSchema } = require("../validation/userValidation");
 // const {sign}
 
 // ONBOARDING STAGE
 
 exports.registerUser = async (req, res) => {
     try {
+        const validatedData = await validate(req.body, reqisterUserSchema)
         // extract the rquired fields from the request body
-        const { fullName, email, password, gender, userName } = req.body
+        const { fullName, email, password, gender, userName } = validatedData
         // check if the user is existing
         const user = await userModel.findOne({ email: email.toLowerCase() })
 
@@ -69,10 +72,11 @@ exports.registerUser = async (req, res) => {
             data: newUser
         })
 
-    } catch (error) {
-        console.error(error);
+    } catch(error) {
+        // console.error(error);
         res.status(500).json({
-            message: "Error registering User"
+            message: "Error registering User",
+            error: error.message
         })
     }
 };
@@ -322,7 +326,8 @@ exports.resetPassword = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
     try {
-        const { email, password, userName } = req.body;
+        validatedData = await validate(req.body, loginSchema)
+        const { email, password, userName } = validatedData
 
         if (!email && !userName) {
             return res.status(400).json({
@@ -375,7 +380,7 @@ exports.loginUser = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            message: "Internal server error"
+            message: "Internal server error" + error.message
         })
     }
 };
